@@ -55,6 +55,18 @@
           <i class="material-icons">exit_to_app</i>
           <span>{{ $t("sidebar.logout") }}</span>
         </button>
+
+        <a
+          v-if="authMethod != 'json'"
+          class="action"
+          id="logout"
+          :aria-label="$t('sidebar.logout')"
+          :title="$t('sidebar.logout')"
+          v-bind:href="baseURL + '/logout'"
+        >
+          <i class="material-icons">exit_to_app</i>
+          <span>{{ $t("sidebar.logout") }}</span>
+        </a>
       </div>
     </template>
     <template v-else>
@@ -108,6 +120,7 @@ import {
   disableExternal,
   noAuth,
   authMethod,
+  baseURL,
 } from "@/utils/constants";
 
 export default {
@@ -123,6 +136,7 @@ export default {
     disableExternal: () => disableExternal,
     noAuth: () => noAuth,
     authMethod: () => authMethod,
+    baseURL: () => baseURL,
   },
   methods: {
     toRoot() {
